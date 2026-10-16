@@ -6,102 +6,312 @@
     <title>Hermenêutica e o Caráter de Deus</title>
     <style>
         :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #e0e0e0;
-            --accent-color: #d4af37; /* Tom sóbrio para destaque */
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --border-card: #334155;
+            --accent-gold: #fbbf24;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-highlight: #38bdf8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding-bottom: 60px;
         }
 
-        header {
+        /* Top Bar Fixa */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-card);
+            padding: 15px 20px;
+            z-index: 100;
             text-align: center;
-            max-width: 800px;
-            margin: 40px 0;
         }
 
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Header */
+        header {
+            max-width: 900px;
+            margin: 60px auto 40px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Container dos Blocos Verticalizados */
         .container {
-            width: 100%;
-            max-width: 800px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 24px; /* Espaço entre os blocos empilhados */
+            gap: 32px;
         }
 
+        /* Card / Bloco Vertical */
         .card {
-            background-color: var(--card-bg);
-            border-left: 4px solid var(--accent-color);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 36px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: #475569;
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         .card h2 {
-            margin-top: 0;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
             color: #ffffff;
-            font-size: 1.4rem;
         }
 
-        .card p, .card blockquote {
-            line-height: 1.6;
-            color: #b0b0b0;
+        .card p {
+            margin-bottom: 16px;
+            color: #cbd5e1;
         }
 
-        .card blockquote {
-            border-left: 2px solid #555;
-            margin: 15px 0;
-            padding-left: 15px;
+        .card p strong {
+            color: var(--text-main);
+        }
+
+        /* Citações Bíblicas em Destaque */
+        blockquote {
+            background-color: #0f172a;
+            border-left: 4px solid var(--accent-gold);
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
             font-style: italic;
-            color: #dcdcdc;
+            color: #e2e8f0;
         }
 
+        blockquote span {
+            display: block;
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+        }
+
+        /* Tabela Estilizada */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #0f172a;
+            color: var(--accent-gold);
+            padding: 12px 16px;
+            border-bottom: 2px solid var(--border-card);
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-card);
+            color: #cbd5e1;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(15, 23, 42, 0.4);
+        }
+
+        /* Rodapé */
         footer {
-            margin-top: 50px;
+            max-width: 900px;
+            margin: 60px auto 0 auto;
             text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--border-card);
+            color: var(--text-muted);
             font-size: 0.9rem;
-            color: #777;
         }
     </style>
 </head>
 <body>
 
+    <!-- Navegação Ancorada -->
+    <nav>
+        <a href="#introducao">Introdução</a>
+        <a href="#fundamentacao">Fundamentação</a>
+        <a href="#confronto">Jesus vs Tradicionalismo</a>
+        <a href="#analogia">Analogia Jurídica</a>
+        <a href="#sintese">Sintese</a>
+    </nav>
+
+    <!-- Header Principal -->
     <header>
-        <h1>Princípios Hermenêuticos</h1>
-        <p>A tese do caráter de Deus como cláusula pétrea das Escrituras.</p>
+        <h1>A Hermenêutica do Caráter Divino</h1>
+        <p>Uma análise teológica e analítico-jurídica sobre o amor <em>Ágape</em> como cláusula pétrea na interpretação das Escrituras Sagradas.</p>
     </header>
 
     <div class="container">
-        <!-- Bloco 1 -->
-        <div class="card">
-            <h2>1. A Natureza Constitutiva</h2>
-            <p>O amor ágape não é apenas um mandamento isolado, mas a própria essência ontológica do Autor da norma.</p>
-            <blockquote>"Quem não ama não conhece a Deus, porque Deus é amor." (1 João 4:8)</blockquote>
-        </div>
 
-        <!-- Bloco 2 -->
-        <div class="card">
-            <h2>2. O Controle de Constitucionalidade de Cristo</h2>
-            <p>Jesus confrontou o legalismo dos religiosos demonstrando que a letra formal não pode anular a justiça e a misericórdia.</p>
-            <blockquote>"Vocês dão o dízimo da hortelã... mas negligenciaram os preceitos mais importantes da lei: a justiça, a misericórdia e a fidelidade." (Mt 23:23)</blockquote>
-        </div>
+        <!-- BLOCO 1: INTRODUÇÃO -->
+        <article id="introducao" class="card">
+            <span class="card-tag">Tese Hermenêutica</span>
+            <h2>1. A Premissa Fundamental</h2>
+            <p>A tese central estabelece que <strong>a Bíblia deve ser interpretada tendo como chave primária o próprio caráter de Deus</strong>. Preceitos legais, normas operacionais e relatos históricos contidos no texto sagrado não podem ser lidos de forma isolada ou puramente literal quando o resultado dessa leitura contradiz a essência moral do Criador (misericórdia, justiça, verdade e amor).</p>
+            <p>Dessa forma, o caráter divino atua como o filtro supremo que valida a aplicação de qualquer mandamento ou doutrina no contexto prático.</p>
+        </article>
 
-        <!-- Bloco 3 -->
-        <div class="card">
-            <h2>3. O Ágape como Cláusula Pétrea</h2>
-            <p>Assim como os princípios fundamentais limitam o legislador humano, o caráter divino restringe qualquer interpretação que viole a finalidade do amor.</p>
-        </div>
+        <!-- BLOCO 2: FUNDAMENTAÇÃO BÍBLICA -->
+        <article id="fundamentacao" class="card">
+            <span class="card-tag">Fundamentação Bíblica</span>
+            <h2>2. A Natureza Ontológica de Deus e a Regra do Ágape</h2>
+            <p>Na teologia do Novo Testamento, o amor <em>ágape</em> não é apresentado apenas como uma regra moral de conduta, mas como a própria definição do ser de Deus.</p>
+            
+            <blockquote>
+                "Quem não ama não conhece a Deus, porque Deus é amor."
+                <span>1 João 4:8</span>
+            </blockquote>
+
+            <p>O apóstolo Paulo reforça a necessidade desse filtro ao declarar a nulidade de qualquer ato, conhecimento ou rigor espiritual que não seja conduzido pelo <em>ágape</em>:</p>
+
+            <blockquote>
+                "Ainda que eu tenha o dom de profecia, saiba todos os mistérios e todo o conhecimento... se não tiver amor, nada serei."
+                <span>1 Coríntios 13:2</span>
+            </blockquote>
+        </article>
+
+        <!-- BLOCO 3: JESUS E OS RELIGIOSOS -->
+        <article id="confronto" class="card">
+            <span class="card-tag">Análise Evangélica</span>
+            <h2>3. O Confronto de Cristo com a Liderança Religiosa</h2>
+            <p>Durante o seu ministério, Jesus utilizou recorrentemente este método hermenêutico para combater a interpretação hiper-focada na letra, nas regras rituais e na tradição dos fariseus e mestres da Lei.</p>
+
+            <p><strong>Exemplos de Controle Hermenêutico de Jesus:</strong></p>
+            <ul>
+                <li style="margin-bottom: 12px; margin-left: 20px;">
+                    <strong>Misericórdia sobre o Ritual:</strong> Ao ser questionado sobre rituais de pureza e refeições com pecadores, Jesus resgata o profeta Oseias: <em>"Misericórdia quero, e não sacrifício"</em> (Mt 9:13).
+                </li>
+                <li style="margin-bottom: 12px; margin-left: 20px;">
+                    <strong>A Intenção da Lei:</strong> Ao defender o descanso no sábado, resgatou a intenção benevolente de Deus: <em>"O sábado foi feito por causa do homem, e não o homem por causa do sábado"</em> (Mc 2:27).
+                </li>
+                <li style="margin-left: 20px;">
+                    <strong>Hierarquia de Relevância:</strong> Denunciou a priorização de minúcias em detrimento do essencial: <em>"Vocês dão o dízimo da hortelã... mas têm negligenciado os preceitos mais importantes da lei: a justiça, a misericórdia e a fidelidade"</em> (Mt 23:23).
+                </li>
+            </ul>
+        </article>
+
+        <!-- BLOCO 4: ANALOGIA COM O DIREITO PÚBLICO -->
+        <article id="analogia" class="card">
+            <span class="card-tag">Direito Constitucional</span>
+            <h2>4. Analogia com o Ordenamento Jurídico Brasileiro</h2>
+            <p>Fazendo um paralelo com o Direito Público do Brasil (Constituição Federal de 1988), o amor <em>ágape</em> e o caráter de Deus não funcionam meramente como a norma processual (o procedimento de aplicação), mas como as <strong>Cláusulas Pétreas (art. 60, § 4º da CF/88)</strong>.</p>
+            <p>Assim como uma lei ordinária ou Emenda Constitucional é <strong>inconstitucional</strong> se ferir os direitos fundamentais ou a forma federativa, qualquer interpretação bíblica torna-se "ilegítima" ou "nula" se violar o núcleo duro da revelação: o caráter moral de Deus.</p>
+        </article>
+
+        <!-- BLOCO 5: TABELA COMPARATIVA -->
+        <article id="sintese" class="card">
+            <span class="card-tag">Sintese Analítica</span>
+            <h2>5. Quadro Comparativo: Teologia vs. Direito Público</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoria Teológica</th>
+                            <th>Equivalente no Direito Público</th>
+                            <th>Função no Sistema</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>O Caráter de Deus / Ágape</strong></td>
+                            <td>Cláusulas Pétreas / Princípios Constitucionais</td>
+                            <td>Limite material imutável que valida todas as demais regras.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Os Mandamentos / Preceitos</strong></td>
+                            <td>Direito Material (Código Civil, Penal)</td>
+                            <td>Define deveres, proibições e obrigações operacionais.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>A Ação do Cristão no Caso Prático</strong></td>
+                            <td>Direito Processual / Devido Processo</td>
+                            <td>A forma justa, humana e proporcional de aplicar a norma.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tradições Rituais Rígidas</strong></td>
+                            <td>Atos Infralegais / Regulamentos</td>
+                            <td>Regras acessórias que se tornam nulas se violarem a essência.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <!-- BLOCO 6: CONCLUSÃO -->
+        <article class="card">
+            <span class="card-tag">Conclusão</span>
+            <h2>6. Considerações Finais</h2>
+            <p>Interpretar a Bíblia pelo caráter de Deus não significa relativizar a autoridade do texto, mas sim **respeitar a hierarquia da própria revelação**. Jesus demonstrou que a letra desprovida de justiça, misericórdia e fidelidade transforma o texto sagrado em fardo e opressão. O amor <em>ágape</em> permanece como o vetor interpretativo supremo e a chave hermenêutica definitiva.</p>
+        </article>
+
     </div>
 
     <footer>
-        <p>Publicado via GitHub Pages</p>
-    </body>
+        <p>Desenvolvido para publicação em GitHub Pages — Estudo Hermenêutico e Teológico</p>
+    </footer>
+
+</body>
 </html>
